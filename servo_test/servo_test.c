@@ -16,8 +16,8 @@ int main()
 	set_degree(0);		//For 0 degree rotation
 	_delay_ms(1000);	//Delay for 1s
 	
-    set_degree(90);		//For 90 degree rotation
-    _delay_ms(1000);	//Delay for 1s
+  	set_degree(90);		//For 90 degree rotation
+  	_delay_ms(1000);	//Delay for 1s
 	
 	set_degree(180);	//For 180 degree rotation
 	_delay_ms(1000);	//Delay for 1s
