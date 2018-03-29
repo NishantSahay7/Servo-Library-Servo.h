@@ -1,6 +1,5 @@
-# Servo-Library-Servo.h-
-Servo Library for AVR Microcontrollers
-Library for Servo Motor:
+# Servo-Library-Servo.h
+Servo Library for AVR Microcontrollers:
 
 Functions:
 
