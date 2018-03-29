@@ -1,0 +1,198 @@
+   1               		.file	"servo_test.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+  15               	.Ltext0:
+  16               	.global	servo_init
+  18               	servo_init:
+  19               	.LFB6:
+  20               	.LM1:
+  21               	/* prologue: function */
+  22               	/* frame size = 0 */
+  23               	.LM2:
+  24 0000 8FB5      		in r24,79-32
+  25 0002 826A      		ori r24,lo8(-94)
+  26 0004 8FBD      		out 79-32,r24
+  27               	.LM3:
+  28 0006 8EB5      		in r24,78-32
+  29 0008 8B61      		ori r24,lo8(27)
+  30 000a 8EBD      		out 78-32,r24
+  31               	.LM4:
+  32 000c 87E8      		ldi r24,lo8(4999)
+  33 000e 93E1      		ldi r25,hi8(4999)
+  34 0010 97BD      		out (70)+1-32,r25
+  35 0012 86BD      		out 70-32,r24
+  36               	.LM5:
+  37 0014 81B3      		in r24,49-32
+  38 0016 8063      		ori r24,lo8(48)
+  39 0018 81BB      		out 49-32,r24
+  40               	/* epilogue start */
+  41               	.LM6:
+  42 001a 0895      		ret
+  43               	.LFE6:
+  45               	.global	set_degree
+  47               	set_degree:
+  48               	.LFB7:
+  49               	.LM7:
+  50               	.LVL0:
+  51               	/* prologue: function */
+  52               	/* frame size = 0 */
+  53               	.LM8:
+  54 001c 26E1      		ldi r18,lo8(22)
+  55 001e 30E0      		ldi r19,hi8(22)
+  56 0020 AC01      		movw r20,r24
+  57 0022 429F      		mul r20,r18
+  58 0024 C001      		movw r24,r0
+  59 0026 439F      		mul r20,r19
+  60 0028 900D      		add r25,r0
+  61 002a 529F      		mul r21,r18
+  62 002c 900D      		add r25,r0
+  63 002e 1124      		clr r1
+  64               	.LVL1:
+  65 0030 69E0      		ldi r22,lo8(9)
+  66 0032 70E0      		ldi r23,hi8(9)
+  67 0034 0E94 0000 		call __divmodhi4
+  68 0038 6056      		subi r22,lo8(-(160))
+  69 003a 7F4F      		sbci r23,hi8(-(160))
+  70 003c 7BBD      		out (74)+1-32,r23
+  71 003e 6ABD      		out 74-32,r22
+  72               	/* epilogue start */
+  73               	.LM9:
+  74 0040 0895      		ret
+  75               	.LFE7:
+  77               	.global	main
+  79               	main:
+  80               	.LFB8:
+  81               	.LM10:
+  82 0042 CF93      		push r28
+  83 0044 DF93      		push r29
+  84               	/* prologue: function */
+  85               	/* frame size = 0 */
+  86               	.LM11:
+  87 0046 0E94 0000 		call servo_init
+  88               	.LBB24:
+  89               	.LBB25:
+  90               	.LBB26:
+  91               	.LBB27:
+  92               	.LM12:
+  93 004a C0E9      		ldi r28,lo8(400)
+  94 004c D1E0      		ldi r29,hi8(400)
+  95               	.LVL2:
+  96               	.L9:
+  97               	.LBE27:
+  98               	.LBE26:
+  99               	.LBE25:
+ 100               	.LBE24:
+ 101               	.LM13:
+ 102 004e 80E0      		ldi r24,lo8(0)
+ 103 0050 90E0      		ldi r25,hi8(0)
+ 104               	.LVL3:
+ 105 0052 0E94 0000 		call set_degree
+ 106               	.LVL4:
+ 107 0056 80E1      		ldi r24,lo8(10000)
+ 108 0058 97E2      		ldi r25,hi8(10000)
+ 109               	.LVL5:
+ 110               	.L6:
+ 111               	.LBB31:
+ 112               	.LBB30:
+ 113               	.LBB29:
+ 114               	.LBB28:
+ 115               	.LM14:
+ 116 005a FE01      		movw r30,r28
+ 117               	.LVL6:
+ 118               	/* #APP */
+ 119               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 120 005c 3197      		1: sbiw r30,1
+ 121 005e 01F4      		brne 1b
+ 122               	 ;  0 "" 2
+ 123               	/* #NOAPP */
+ 124               	.LBE28:
+ 125               	.LBE29:
+ 126               	.LM15:
+ 127 0060 0197      		sbiw r24,1
+ 128               	.LM16:
+ 129 0062 01F4      		brne .L6
+ 130               	.LBE30:
+ 131               	.LBE31:
+ 132               	.LM17:
+ 133 0064 8AE5      		ldi r24,lo8(90)
+ 134 0066 90E0      		ldi r25,hi8(90)
+ 135               	.LVL7:
+ 136 0068 0E94 0000 		call set_degree
+ 137               	.LVL8:
+ 138 006c 80E1      		ldi r24,lo8(10000)
+ 139 006e 97E2      		ldi r25,hi8(10000)
+ 140               	.LVL9:
+ 141               	.L7:
+ 142               	.LBB32:
+ 143               	.LBB33:
+ 144               	.LBB34:
+ 145               	.LBB35:
+ 146               	.LM18:
+ 147 0070 FE01      		movw r30,r28
+ 148               	.LVL10:
+ 149               	/* #APP */
+ 150               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 151 0072 3197      		1: sbiw r30,1
+ 152 0074 01F4      		brne 1b
+ 153               	 ;  0 "" 2
+ 154               	/* #NOAPP */
+ 155               	.LBE35:
+ 156               	.LBE34:
+ 157               	.LM19:
+ 158 0076 0197      		sbiw r24,1
+ 159               	.LM20:
+ 160 0078 01F4      		brne .L7
+ 161               	.LBE33:
+ 162               	.LBE32:
+ 163               	.LM21:
+ 164 007a 84EB      		ldi r24,lo8(180)
+ 165 007c 90E0      		ldi r25,hi8(180)
+ 166               	.LVL11:
+ 167 007e 0E94 0000 		call set_degree
+ 168               	.LVL12:
+ 169 0082 80E1      		ldi r24,lo8(10000)
+ 170 0084 97E2      		ldi r25,hi8(10000)
+ 171               	.LVL13:
+ 172               	.L8:
+ 173               	.LBB36:
+ 174               	.LBB37:
+ 175               	.LBB38:
+ 176               	.LBB39:
+ 177               	.LM22:
+ 178 0086 FE01      		movw r30,r28
+ 179               	.LVL14:
+ 180               	/* #APP */
+ 181               	 ;  105 "c:/winavr-20100110/lib/gcc/../../avr/include/util/delay_basic.h" 1
+ 182 0088 3197      		1: sbiw r30,1
+ 183 008a 01F4      		brne 1b
+ 184               	 ;  0 "" 2
+ 185               	/* #NOAPP */
+ 186               	.LBE39:
+ 187               	.LBE38:
+ 188               	.LM23:
+ 189 008c 0197      		sbiw r24,1
+ 190               	.LM24:
+ 191 008e 01F4      		brne .L8
+ 192 0090 00C0      		rjmp .L9
+ 193               	.LBE37:
+ 194               	.LBE36:
+ 195               	.LFE8:
+ 237               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 servo_test.c
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:2      *ABS*:0000003f __SREG__
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:3      *ABS*:0000003e __SP_H__
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:4      *ABS*:0000003d __SP_L__
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:5      *ABS*:00000034 __CCP__
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:6      *ABS*:00000000 __tmp_reg__
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:7      *ABS*:00000001 __zero_reg__
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:18     .text:00000000 servo_init
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:47     .text:0000001c set_degree
+C:\Users\nisha\AppData\Local\Temp/ccBCFbhk.s:79     .text:00000042 main
+
+UNDEFINED SYMBOLS
+__divmodhi4
