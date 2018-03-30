@@ -11,7 +11,7 @@ int main()
 
 	while (1)
 	{
-	//Any angle of rotation(0 to 180) can be given
+	//  NOTE: Any angle of rotation(0 to 180) can be given
 	
 	set_degree(0);		//For 0 degree rotation
 	_delay_ms(1000);	//Delay for 1s
